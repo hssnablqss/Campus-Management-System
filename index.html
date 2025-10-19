@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Index</title>
+    <link href="css/Index.css" rel="stylesheet" type="text/css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+</head>
+<body>
+    <div class="header">
+        <h3>Limited Time: Get 20% Off — Shop Now Before It's Gone!</h3>
+    </div>
+
+    <nav class="top-nav">
+        <div class="top-item">
+            <div class="left-nav">
+                <a href="index.html" class="nav-item home active">Home</a>
+                    <div class="center-nav-links">
+                        <a href="shop.html" class="nav-item ">Shop</a>
+                        <a href="aboutus.html" class="nav-item  ">About us</a>
+                        <a href="signin.html" class="nav-item ">Sign In</a>
+                    </div>
+            </div>
+            <div class="right-nav">
+                <a href="cart.html" class="nav-item">Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar + Slideshow -->
+    <div class="scrolldown-wrapper">
+        <div class="scrolldown">
+
+            <div class="dropdown">
+                <button class="dropbtn">Apparel <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="hoodies.html">Hoodies</a>
+                    <a href="facultytees.html">Faculty Tshirt</a>
+                    <a href="caps.html">Caps & Beanie</a>
+                    <a href="jacket.html">Varsity Jacket</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Drinkware <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="waterbottle.html">Water Bottle</a>
+                    <a href="coffemugs.html">Coffee Mugs</a>
+                    <a href="thermos.html">Travel Tumbler Thermos</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Technologies & Accessories <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="laptopsleeve.html">Laptop Sleeve Cases</a>
+                    <a href="phonegrips.html">Phone Grips & Charms</a>
+                </div>
+            </div>
+
+            <a href="stationery&studygear.html" class="simple-link">Stationery & Study Gear</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">Campus Lifestyle <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="totebag.html">Tote Bag</a>
+                    <a href="lanyard.html">Lanyard</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Seasonal Base Event Item <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="orientationkits.html">Orientation Kits</a>
+                    <a href="graduationkits.html">Graduation Kits</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img id="slideshow" src="e-commerce.jpg" alt="Slideshow" />
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <h3>About Us</h3>
+                <p>We are a passionate provider!</p>
+            </div>
+            <div class="footer-content">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="shop.html">Our Shop</a></li>
+                    <li><a href="signin.html">Sign In here</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Follow Us</h3>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>© 2025 E-Commerce. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Slideshow Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const images = [
+            "e-commerce.jpg",
+            "e-commerce1.jpg",
+        ];
+
+        let currentIndex = 0;
+        const slideshow = document.getElementById("slideshow");
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            slideshow.src = images[currentIndex];
+        }, 5000);
+
+        // Only run dropdown JS on mobile
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+        if (isMobile) {
+            document.querySelectorAll('.dropbtn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdownContent = button.nextElementSibling;
+
+                    const isOpen = dropdownContent.style.display === "flex";
+
+                    // Close all dropdowns
+                    document.querySelectorAll('.dropdown-content').forEach(dc => {
+                        dc.style.display = "none";
+                    });
+
+                    // Toggle clicked one
+                    dropdownContent.style.display = isOpen ? "none" : "flex";
+                });
+            });
+
+            // Prevent click inside dropdown-content from closing
+            document.querySelectorAll('.dropdown-content').forEach(dc => {
+                dc.addEventListener('click', e => e.stopPropagation());
+            });
+
+            // Close all if click outside
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-content').forEach(dc => dc.style.display = "none");
+                }
+            });
+        }
+    });
+</script>
+
+
+</body>
+</html>
